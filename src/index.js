@@ -2,6 +2,7 @@ import ReactDom from "react-dom";
 import React from "react";
 import {MessageList} from "./components/MessageField";
 import {messages} from "./components/message";
+import {Counter} from "./components/timer";
 
 
 /*
@@ -30,9 +31,8 @@ const MessageList = ({messages}) => {
 
 */
 
-ReactDom.render(<MessageList messages={messages}   />, document.getElementById("root"));
-
-
+//ReactDom.render(<MessageList messages={messages}   />, document.getElementById("root"));
+ReactDom.render(<Counter />, document.getElementById("root"));
 
 
 
