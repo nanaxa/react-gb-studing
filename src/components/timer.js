@@ -4,14 +4,14 @@ export class Counter extends Component {
         constructor(props) {
             super(props);
             this.state = {
-                count: 5
+                count: 0
             }
 
         }
     //we do when component mount
     componentDidMount() {
         console.log("Я компонент и я загрузился");
-        this.setState({count:52});
+
     }
     //this is bad practice to use componentWillMount
    /* componentWillMount() {
@@ -27,11 +27,12 @@ export class Counter extends Component {
     }
     handleCount() {
             console.log("There is a tap");
+            this.setState({ count : this.state.count + 1 } );
         }
     render() {
         return <>
                 <span>{this.state.count}</span>
-                <button type="submit" onClick={this.handleCount}>tap</button>
+                <button type="submit" onClick={this.handleCount.bind(this)}>+1</button>
                 </>
     }
 }
