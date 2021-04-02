@@ -1,15 +1,18 @@
 import React, {Component} from "react";
 
 export class Counter extends Component {
-        constructor(props) {
+    state = {
+        count: 0
+    }
+      /*  constructor(props) {
             super(props);
             this.state = {
                 count: 0
             }
             //bind work only one time when button are clicked, if we do it in constructor
             this.handleCount = this.handleCount.bind(this);
-
         }
+        */
     //we do when component mount
     componentDidMount() {
         console.log("Я компонент и я загрузился");
@@ -27,11 +30,11 @@ export class Counter extends Component {
     componentWillUnmount() {
          console.log("Я компонент и я буду отключен");
     }
-    handleCount() {
+    handleCount = () => {
             console.log("There is a tap");
             this.setState({ count : this.state.count + 1 } );
         }
-    render() {
+    render () {
         return <>
 
             <span>{this.state.count}</span>
