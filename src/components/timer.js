@@ -30,6 +30,7 @@ export class Counter extends Component {
     componentWillUnmount() {
          console.log("Я компонент и я буду отключен");
     }
+    //transform handlecount from method to arrow function because it don't loose context;
     handleCount = () => {
             console.log("There is a tap");
             this.setState({ count : this.state.count + 1 } );
