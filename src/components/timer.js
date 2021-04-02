@@ -6,6 +6,8 @@ export class Counter extends Component {
             this.state = {
                 count: 0
             }
+            //bind work only one time when button are clicked, if we do it in constructor
+            this.handleCount = this.handleCount.bind(this);
 
         }
     //we do when component mount
@@ -29,7 +31,17 @@ export class Counter extends Component {
             console.log("There is a tap");
             this.setState({ count : this.state.count + 1 } );
         }
-    //bad practice(for not fast pc's/smartphones) to use this method, because func is uses resources on each click/render.
+    render() {
+        return <>
+
+            <span>{this.state.count}</span>
+            < button type="submit" onClick = { this.handleCount } > +1 </ button >
+        </>
+    }
+
+    /*
+     bad practice(for not fast pc's/smartphones) to use this method, because func is uses resources on each click/render.
+    Arrow function don't loose context
     render() {
         return <>
 
@@ -37,8 +49,8 @@ export class Counter extends Component {
             <button type="submit" onClick={ () => this.handleCount() }>+1</button>
         </>
     }
-
-    /*it's bad practice(for not fast pc's/smartphones) to use this method, because bind is uses resources on each click.
+    it's bad practice(for not fast pc's/smartphones) to use this method, because bind is uses resources on each click.
+    bind(this) - context of our class, not context of event onClick
     render() {
         return <>
 
