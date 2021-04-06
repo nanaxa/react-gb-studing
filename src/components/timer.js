@@ -31,16 +31,16 @@ export class Counter extends Component {
          console.log("Я компонент и я буду отключен");
     }
     //transform handlecount from method to arrow function because it don't loose context;
-    handleCount = (num) => {
+    handleCount = (event) => {
             console.log("There is a tap");
-
-            this.setState((state) => ({ count : state.count + num }) );
+            let num = +event.target.dataset.number;
+            this.setState(({count}) => ({ count : count + num }) );
         }
     render () {
         return <>
-            < button type="submit" onClick = { () => { this.handleCount(-1)} } > -1 </ button >
+            < button type="submit" data-number="-1" onClick = { this.handleCount } > -1 </ button >
             <span>{this.state.count}</span>
-            < button type="submit"  onClick = { () => { this.handleCount(1) } } > +1 </ button >
+            < button type="submit" data-number="1" onClick = { this.handleCount } > +1 </ button >
         </>
     }
 
