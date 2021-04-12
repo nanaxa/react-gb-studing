@@ -3,6 +3,7 @@ import React from "react";
 import {MessageList} from "./components/MessageField";
 import {messages} from "./components/message";
 import {Counter} from "./components/timer";
+import {TriggerTimer} from "./components/triggerTimer";
 
 
 /*
@@ -32,7 +33,7 @@ const MessageList = ({messages}) => {
 */
 
 //ReactDom.render(<MessageList messages={messages}   />, document.getElementById("root"));
-ReactDom.render(<Counter />, document.getElementById("root"));
+ReactDom.render(<TriggerTimer/>, document.getElementById("root"));
 
 
 

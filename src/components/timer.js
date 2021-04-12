@@ -16,7 +16,6 @@ export class Counter extends Component {
     //we do when component mount
     componentDidMount() {
         console.log("Я компонент и я загрузился");
-
     }
     //this is bad practice to use componentWillMount
    /* componentWillMount() {
