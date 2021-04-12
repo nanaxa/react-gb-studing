@@ -3,7 +3,7 @@ import React from "react";
 import {MessageList} from "./components/MessageField";
 import {messages} from "./components/message";
 import {Counter} from "./components/timer";
-import {TriggerTimer} from "./components/triggerTimer";
+import {TriggerTimer} from "./components/triggerTimer.jsx";
 
 
 /*

@@ -3,12 +3,16 @@ import {Counter} from "./timer";
 
 export class TriggerTimer extends Component {
     state = {
-        isShowTimer: true;
+        isShowTimer: true
             }
+    handleTrigger = () =>  {
+        this.setState( ( {isShowTimer} ) => ({isShowTimer: !isShowTimer} ) )
+    }
     render() {
         return <>
-        <button>Show/Hide</button>
-         <Counter />
-        </>
+        <button type={"submit"} onClick={ this.handleTrigger } >Show/Hide</button>
+            <br/>
+            {this.state.isShowTimer || <Counter />}
+              </>
     }
 }
