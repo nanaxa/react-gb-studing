@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 export class Counter extends Component {
     state = {
-        count: 0
+      //  count: 0
     }
       /*  constructor(props) {
             super(props);
@@ -33,12 +33,13 @@ export class Counter extends Component {
     handleCount = (event) => {
             console.log("There is a tap");
             let num = +event.target.dataset.number;
-            this.setState(({count}) => ({ count : count + num }) );
+            this.props.onCount(num);
         }
     render () {
+        const{count} = this.props;
         return <>
             < button type="submit" data-number="-1" onClick = { this.handleCount } > -1 </ button >
-            <span>{this.state.count}</span>
+            <span>{count}</span>
             < button type="submit" data-number="1" onClick = { this.handleCount } > +1 </ button >
         </>
     }
