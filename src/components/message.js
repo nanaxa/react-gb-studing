@@ -1,7 +1,20 @@
-import React from "react";
+import React, {Component} from "react";
+import Proptypes from 'prop-types';
 
 
-export const messages = [
+export class Message extends Component {
+    static propTypes = {
+        text: Proptypes.string.isRequired
+    }
+
+    render() {
+        return <>
+            <h5>{this.props.text}</h5>
+        </>
+    }
+}
+/*
+ export const messages = [
         {name: "Ivan", content: "Hi wazzup?"},
         {name: "Sveta", content: "Nice! And you?"},
         {name: "Ivan", content: "What would you do on tomorrow evening?"},
@@ -15,4 +28,4 @@ export const Message = ( {name, content} ) => {
                         <strong>{name}: </strong>{content}
                     </p>
                 </div>
-}
+}*/
