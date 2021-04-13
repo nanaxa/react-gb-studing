@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import {Counter} from "./timer";
+import PropTypes from 'prop-types';
 
 export class TriggerTimer extends Component {
+    static propTypes = {
+        count: PropTypes.number
+        }
     state = {
         isShowTimer: true,
         count: 0
