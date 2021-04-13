@@ -4,11 +4,11 @@ import {Message} from "./message";
 
 export class MessageField extends Component {
         state = {
-            messages: ["Привет", "Как дела?"],
+            messages: ["Hi", "What's up?"],
         }
 
         handleClick = () => {
-            this.setState({messages: [ ...this.state.messages, "Нормально!" ]})
+            this.setState({messages: [ ...this.state.messages, "Cool!" ]})
         }
 
         render() {
@@ -16,7 +16,7 @@ export class MessageField extends Component {
                 return <Message key={index} text={ text } />
             })
             return <div>
-                <button type={"submit"} onClick={ this.handleClick}>Отправить</button>
+                <button type={"submit"} onClick={ this.handleClick}>Send</button>
                 {MessageElements}
 
             </div>
