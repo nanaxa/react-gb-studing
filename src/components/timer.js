@@ -4,6 +4,7 @@ export class Counter extends Component {
     state = {
       //  count: 0
     }
+    interval = null;
       /*  constructor(props) {
             super(props);
             this.state = {
@@ -16,6 +17,7 @@ export class Counter extends Component {
     //we do when component mount
     componentDidMount() {
         console.log("Я компонент и я загрузился");
+        this.interval = setInterval(()=>console.log("It's show time!"), 2000);
     }
     //this is bad practice to use componentWillMount
    /* componentWillMount() {
@@ -28,6 +30,7 @@ export class Counter extends Component {
 
     componentWillUnmount() {
          console.log("Я компонент и я буду отключен");
+         clearInterval(this.interval);
     }
     //transform handlecount from method to arrow function because it don't loose context;
     handleCount = (event) => {
