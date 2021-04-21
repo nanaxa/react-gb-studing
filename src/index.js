@@ -1,11 +1,8 @@
 import ReactDom from "react-dom";
 import React from "react";
-import {MessageField} from "./components/MessageField";
-import {messages} from "./components/message";
-import {Counter} from "./components/timer";
-import {TriggerTimer} from "./components/triggerTimer.jsx";
+import {App} from "./container/App";
 
-
+ReactDom.render(<App />, document.getElementById("root"));
 
 /*
 const messages = [
@@ -34,7 +31,7 @@ const MessageList = ({messages}) => {
 */
 
 //ReactDom.render(<MessageList messages={messages}   />, document.getElementById("root"));
-ReactDom.render(<MessageField/>, document.getElementById("root"));
+
 
 
 

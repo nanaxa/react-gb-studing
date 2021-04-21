@@ -1,8 +1,15 @@
 import React, {Component} from "react";
-import {Message} from "./message";
+import {Message} from "../Message/Message";
+import PropTypes from "prop-types";
 
+export const MessageField = ({messages}) =>
+    (messages.map( (message, index) => <Message content={message.content} name={message.name} key={index}/> ) );
 
-export class MessageField extends Component {
+MessageField.propTypes = {
+    messages: PropTypes.arrayOf(PropTypes.shape(Message.propTypes))
+}
+
+/* export class MessageField extends Component {
         state = {
             messages: ["Hi!", "What's up?"],
         }
@@ -20,6 +27,7 @@ export class MessageField extends Component {
         }
 
         render() {
+
             const MessageElements = this.state.messages.map((text,index) => {
                 return <Message key={index} text={ text } />
             })
@@ -34,7 +42,7 @@ export class MessageField extends Component {
 
 
 }
-
+ */
 /*
 MessageList = ({messages}) => {
     return messages.map((message, index) => {
