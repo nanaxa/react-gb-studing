@@ -14,8 +14,8 @@ import {Message} from "../Message/Message";
 
 export const Chat = ( {messages, message, name, onSendMessage} ) =>
     (<div>
-        <MessageField  messages={messages}/>
-        <ChatForm {...{message,name,onSendMessage}}/>
+        <MessageField  messages={ messages }/>
+        <ChatForm {...{ message, name, onSendMessage } }/>
 
     </div>);
 

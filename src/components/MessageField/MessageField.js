@@ -2,9 +2,12 @@ import React, {Component} from "react";
 import {Message} from "../Message/Message";
 import PropTypes from "prop-types";
 
-export const MessageField = ({messages}) =>
-    (messages.map( (message, index) => <Message content={message.content} name={message.name} key={index}/> ) );
+//Принимаем объьект с сообщениями и для каждого сообщения выводим разметку
+//вызыв Message и передаем пропсы
+export const MessageField = ( { messages } ) =>
+    ( messages.map( (message, index) => <Message content={message.content} name={message.name} key={index}/> ) );
 
+//указываем типы пропсов форму массива как у месседжа
 MessageField.propTypes = {
     messages: PropTypes.arrayOf(PropTypes.shape(Message.propTypes))
 }

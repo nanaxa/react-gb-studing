@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-export const Message = ({name, content}) =>
+//создаем лямбда функцию c разметкой и передаем в нее имя и текс сообщения
+// экспортируем в Message field
+export const Message = ( { name, content } ) =>
     (<p><strong>{name}</strong>: {content}</p>);
 
 Message.propTypes = {

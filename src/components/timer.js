@@ -17,6 +17,8 @@ export class Counter extends Component {
     //we do when component mount
     componentDidMount() {
         console.log("Я компонент и я загрузился");
+        //при загрузке компонента мы выводим лог через кажждые 2 сек
+        //Обязательно нужно очистить интервал при Unmount
         this.interval = setInterval(()=>console.log("It's show time!"), 2000);
     }
     //this is bad practice to use componentWillMount
@@ -30,6 +32,7 @@ export class Counter extends Component {
 
     componentWillUnmount() {
          console.log("Я компонент и я буду отключен");
+         //очищаем интервал при скрытие(unmount)
          clearInterval(this.interval);
     }
     //transform handlecount from method to arrow function because it don't loose context;
