@@ -10,6 +10,7 @@ export class ChatContainer extends Component {
             {name: "Sveta", content: "I'll be free? So?"},
             {name: "Ivan", content: "I'll want you to go to cinema?"},
         ],
+
     };
 
     handleSendMessage = (message) => {
@@ -17,8 +18,8 @@ export class ChatContainer extends Component {
     }
     componentDidUpdate() {
         const lastMessage = this.state.messages[this.state.messages.length - 1];
-        if( lastMessage.name !== this.pogonialo) {
-            setTimeout( () => this.handleSendMessage({name:this.pogonialo, content:"Hi, i/'am a Robot"}),2000 );
+        if( lastMessage.name !== "Android") {
+            setTimeout( () => this.handleSendMessage({name:"Android", content:"Hi, i'm a Robot, don't flood!"}),2000 );
         }
     }
 
