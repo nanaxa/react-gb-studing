@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import {Chat} from '../components/Chat/Chat';
 
+const ROBOT_NAME = "BOT";
 export class ChatContainer extends Component {
-    state = {
+        state = {
         messages: [
             {name: "Ivan", content: "Hi wazzup?"},
             {name: "Sveta", content: "Nice! And you?"},
@@ -10,17 +11,21 @@ export class ChatContainer extends Component {
             {name: "Sveta", content: "I'll be free? So?"},
             {name: "Ivan", content: "I'll want you to go to cinema?"},
         ],
-
     };
+        timeout = null;
 
     handleSendMessage = (message) => {
         this.setState( (state) => ( { messages : [ ... state.messages, message ] } ) );
     }
+
     componentDidUpdate() {
         const lastMessage = this.state.messages[this.state.messages.length - 1];
-        if( lastMessage.name !== "Android") {
-            setTimeout( () => this.handleSendMessage({name:"Android", content:"Hi, i'm a Robot, don't flood!"}),2000 );
+        if( lastMessage.name !== ROBOT_NAME) {
+           this.timeout = setTimeout( () => this.handleSendMessage({name:ROBOT_NAME, content:"Hi, i'm a Robot, don't flood!"}),1000 );
         }
+    }
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
     }
 
     render() {

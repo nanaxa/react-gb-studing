@@ -1,4 +1,4 @@
-import React, {Component, createRef, useState} from "react";
+import React, {Component, createRef, useEffect, useRef, useState} from "react";
 import PropTypes, {shape} from "prop-types";
 
 
@@ -16,7 +16,7 @@ export class ChatForm extends Component {
         name:"",
         content:"",
     }
-    textarea = React.createRef();//создаем реф и привзываем его к textarea
+    textarea = React.createRef();//создаем реф и привязываем его к textarea
     //При загрузке компонента вешаем фокус
     componentDidMount() {
         this.textarea.current.focus();
@@ -52,13 +52,27 @@ export class ChatForm extends Component {
  export const ChatForm = ( { onSendMessage } ) => {// принимает функцию
     const [ name, setName ] = useState("User");//инициализируем стейт геттер(Юзер) и сеттер
     const [ content, setContent ] = useState("my message" )//инициализируем стейт геттер my message
-    const handleClick = () => { //ф-ция вызывает другую функцию с прпсами
+
+    const textarea = useRef(); //хук прописываем его в поле textarea
+
+    useEffect(() => { /* useEffect - срабатывает на component did mount, did update */
+        textarea.current.focus();
+    }, [] ) //чтобы сработал 1 раз, передаем пустой массив 2ым аргументом
+
+    const handleClick = () => { //ф-ция вызывает другую функцию с пропсами
         onSendMessage( { name, content } );
     }
+
     return (
         <div>
             <input type="text"  value={name} onChange={ ( { currentTarget:{ value} } ) => setName( value ) } />
-            <textarea name="textarea" value={content} onChange={ ( { currentTarget:{ value } } ) => setContent( value ) } cols="30" rows="2"></textarea>
+            <textarea
+                    name="textarea"
+                    value={content}
+                    onChange={ ( { currentTarget:{ value } } ) => setContent( value ) }
+                    ref={textarea}
+                    cols="30" rows="2" />
+
             <button type="submit" onClick={ handleClick }>Отправить</button>
         </div>
             //value - то что отображается в текстовом поле или в инпуте
