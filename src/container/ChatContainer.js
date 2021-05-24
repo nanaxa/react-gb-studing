@@ -21,8 +21,8 @@ export class ChatContainer extends Component {
     componentDidUpdate() {
         const lastMessage = this.state.messages[this.state.messages.length - 1];
         if( lastMessage.name !== ROBOT_NAME) {
-           this.timeout = setTimeout( () => this.handleSendMessage({name:ROBOT_NAME, content:"Hi, i'm a Robot, don't flood!"}),1000 );
-        }
+           this.timeout = setTimeout( () => this.handleSendMessage({name:ROBOT_NAME, content:"Hi, i'm a Robot, don't flood!"}),2000 );
+        } else if (lastMessage.name == ROBOT_NAME) { ( clearTimeout(this.timeout) ) }
     }
     componentWillUnmount() {
         clearTimeout(this.timeout);

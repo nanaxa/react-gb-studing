@@ -1,0 +1,9 @@
+.chatForm {
+    max-width: 500px ;
+    display: flex;
+    flex-direction: raw;
+}
+.input {
+    max-width: 100px;
+    color: #black;
+}

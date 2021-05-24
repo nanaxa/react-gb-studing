@@ -1,0 +1,22 @@
+.chat {
+    display: flex;
+    padding: 59px;
+    flex-direction: column;
+    background-color: #ccc;
+    justify-content: center;
+    border: 2px solid gray;
+    border-radius: 6px;
+    max-width: 720px;
+}
+
+.chat p {
+    display: block;
+    border: 1px solid gray;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 7px;
+}
+.chat button {
+    color: #ccc;
+    background: teal;
+}

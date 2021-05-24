@@ -1,5 +1,6 @@
 import React, {Component, createRef, useEffect, useRef, useState} from "react";
 import PropTypes, {shape} from "prop-types";
+import "./chatForm.css";
 
 
 /**
@@ -63,17 +64,27 @@ export class ChatForm extends Component {
         onSendMessage( { name, content } );
     }
 
-    return (
-        <div>
-            <input type="text"  value={name} onChange={ ( { currentTarget:{ value} } ) => setName( value ) } />
-            <textarea
-                    name="textarea"
-                    value={content}
-                    onChange={ ( { currentTarget:{ value } } ) => setContent( value ) }
-                    ref={textarea}
-                    cols="30" rows="2" />
+        // const handleKeyup = (event ) => {
+        // if  (event.keyCode === 13) { // Enter
+        //     handleClick();
+        // }
 
-            <button type="submit" onClick={ handleClick }>Отправить</button>
+    return (
+        <div className="chatForm">
+            <input type="text"
+                   className="input"
+                   value={name}
+                   onChange={ ( { currentTarget:{ value } } ) => setName( value )  }
+                   //onKeyUp={ (event) => { handleKeyup(event, setName( {name} ) ) } }
+            />
+            <textarea name="textarea"
+                      value={content}
+                      onChange={ ( { currentTarget:{ value } } ) => setContent( value ) }
+                      ref={textarea}
+                      cols="30"
+                      rows="2"
+            />
+            <button type="submit" onClick={ handleClick } >Отправить</button>
         </div>
             //value - то что отображается в текстовом поле или в инпуте
 
@@ -90,16 +101,8 @@ export const ChatForm = ( {message,name, onSendMessage} ) =>
 */
 
 ChatForm.protoTypes = {
-
     content: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    onSendMessage: PropTypes.func.isRequired
-
-
-
-
-
-
-
-}
+    onSendMessage: PropTypes.func.isRequired,
+};
 

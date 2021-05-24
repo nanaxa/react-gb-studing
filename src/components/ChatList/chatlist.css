@@ -1,0 +1,28 @@
+.ChatList {
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    max-width: 300px;
+    border: 2px solid gray;
+    border-radius: 6px;
+    justify-content: center;
+    align-items:center;
+    max-height: 300px;
+
+
+}
+.ChatList ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.ChatList li {
+    background-color: #ccc;
+    list-style-type: none;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 6px;
+    }

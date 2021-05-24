@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {MessageField} from "../MessageField/MessageField";
 import {ChatForm} from "../ChatForm/ChatForm";
 import {Message} from "../Message/Message";
-
+import "./chat.css";
 /**
  *
  * @param message текс сообщения
@@ -13,7 +13,7 @@ import {Message} from "../Message/Message";
  */
 
 export const Chat = ( {messages, message, name, onSendMessage} ) =>
-    (<div>
+    (<div className="chat">
         <MessageField  messages={ messages }/>
         <ChatForm {...{ message, name, onSendMessage } }/>
 
