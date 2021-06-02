@@ -7,6 +7,9 @@
     border: 2px solid gray;
     border-radius: 6px;
     max-width: 720px;
+    overflow: auto;
+    max-height: 476px;
+    min-height: 300px;
 }
 
 .chat p {

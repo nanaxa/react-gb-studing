@@ -1,5 +1,6 @@
 import React from "react";
 import "./chatlist.css"
+import {Link} from "react-router-dom";
 
 //по идеи тут ддолжен массив приходящий с сервера
 //создаем компонент с разметкой
@@ -8,9 +9,19 @@ import "./chatlist.css"
 export const ChatList = ({chats}) =>
     (<div className="ChatList">
         <ul>
-            <li>Chat 1</li>
-            <li>Chat 2</li>
-            <li>Chat 3</li>
+            <li>
+                <Link to="/chats/1">
+                    Chat 1
+                </Link>
+            </li>
+
+            <Link to="/chats/2">
+                Chat 2
+            </Link>
+
+            <Link to="/chats/3">
+                Chat 3
+            </Link>
         </ul>
     </div>)
 
