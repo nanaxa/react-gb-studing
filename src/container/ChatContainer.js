@@ -52,8 +52,9 @@ export class ChatContainer extends Component {
         const {chats} = this.state; //деструктуризация state
         const{id} = this.props.match.params// передаем в id ссылку после слэша, которую дает нам роутер в пропсах
         //передаем в месседжи стейт по id чата
-        console.log(id);
-        return <Chat {...{ messages: chats[id].messages, onSendMessage: this.handleSendMessage } } />
-
+        console.log(chats[id]);
+        if(id & chats[id]) {
+            return <Chat {...{messages: chats[id].messages, onSendMessage: this.handleSendMessage}} />
+        } else return <p>Выберите чат от 1 до {Object.keys( chats ).length}</p>
     }
 }
