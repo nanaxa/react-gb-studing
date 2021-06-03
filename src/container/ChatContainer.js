@@ -32,29 +32,56 @@ export class ChatContainer extends Component {
 
         },
     };
+
        timeout = null;
 
-    handleSendMessage = (message) => {
-        this.setState( (state) => ( { messages : [ ... state.messages, message ] } ) );
+    componentDidUpdate() {
+        const {chats} = this.state;
+        const {id} = this.props.match.params;
+
+        if(id && chats[id]) {
+            const messages = chats[id].messages;
+            const lastMessage = messages[messages.length - 1];
+            if(lastMessage && lastMessage.name !== ROBOT_NAME) {
+                setTimeout(() => this.handleSendMessage(id)
+                    ( { name:ROBOT_NAME, content:"Привет это бот из чата №"+id+"\n Кожанного мешка нет на месте, ответ будет позже" } ),
+                1500)
+            }
+        }
+
     }
 
-    componentDidUpdate() {
-        // const lastMessage = this.state.messages[this.state.messages.length - 1];
-        // if( lastMessage.name !== ROBOT_NAME) {
-        //    this.timeout = setTimeout( () => this.handleSendMessage({name:ROBOT_NAME, content:"Hi, i'm a Robot, don't flood!"}),2000 );
-        // } else if (lastMessage.name == ROBOT_NAME) { ( clearTimeout(this.timeout) ) }
-    }
     componentWillUnmount() {
         clearTimeout(this.timeout);
     }
 
+    handleSendMessage = (id) => (message) => {
+        this.setState( (state) => (//передаем в стейт(chats)
+            {
+                //вместо деструктизации можно использовать array.concat или object.assign()
+                chats: {
+                    ...state.chats,//деструктуризация чатов(перезаписываем существующий чат,)
+                    [id]: { //добавляем новые данные - указываем id чата который хотим переписать
+                        name: state.chats[id].name, //указываем имя из стора
+                        messages: [//указываем сообщение из стора
+                            ...state.chats[id].messages,//деструктурируем сообшения, добавляем к старым новое
+                            message,
+                        ]
+                    },
+
+                }
+            }))
+    }
+
     render() {
-        const {chats} = this.state; //деструктуризация state
-        const{id} = this.props.match.params// передаем в id ссылку после слэша, которую дает нам роутер в пропсах
+        const { chats } = this.state; //деструктуризация state
+        const{id} = this.props.match.params;// передаем в id ссылку после слэша, которую дает нам роутер в пропсах
         //передаем в месседжи стейт по id чата
-        console.log(chats[id]);
-        if(id & chats[id]) {
-            return <Chat {...{messages: chats[id].messages, onSendMessage: this.handleSendMessage}} />
+
+        if(id && chats[id]) {
+            //передаем пропсы в чат
+            return <Chat {...{ messages: chats[id].messages, onSendMessage: this.handleSendMessage(id) } } />
         } else return <p>Выберите чат от 1 до {Object.keys( chats ).length}</p>
     }
 }
+
